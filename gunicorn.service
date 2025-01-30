@@ -1,0 +1,14 @@
+[Unit]
+Description=demo fastapi application
+After=network.target
+
+[Service]
+User=aakash
+Group=aakash
+WorkingDirectory=/home/aakash/Desktop/flask_app
+Environment="PATH=/home/aakash/Desktop/flask_app/venv/bin"
+EnvironmentFile=/home/aakash/.env
+ExecStart=/home/aakash/Desktop/flask_app/venv/bin/gunicorn -w 4 -b 0.0.0.0:8001 app:app
+
+[Install]
+WantedBy=multi-user.target
